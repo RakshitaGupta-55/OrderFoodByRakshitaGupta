@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OrderFood | Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ---------- Main ---------- */
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family:'Poppins',sans-serif; background:#fff; line-height:1.6; color:#000;}
+a {text-decoration:none; color:inherit;}
+
+/* ---------- Header ---------- */
+header {
+  background:#f26b61;
+  padding:15px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:relative;
+}
+nav {
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+  width:100%;
+}
+nav a {
+  text-decoration:none;
+  color:#333;
+  font-weight:600;
+  transition:color .3s;
+}
+nav a:hover {color:#fff;}
+.menu-icon {display:none; cursor:pointer;}
+.menu-icon img {width:32px; height:32px; object-fit:contain;}
+#menu-toggle {display:none;}
+
+/* ---------- Responsive Header ---------- */
+@media(max-width:768px){
+  nav {
+    position:absolute;
+    top:60px; left:0;
+    width:100%;
+    flex-direction:column;
+    background:#f26b61;
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .3s ease;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  #menu-toggle:checked + label + nav {
+    max-height:400px;
+    padding:10px 0;
+  }
+  nav a {
+    padding:10px 0;
+    color: black;
+  }
+  .menu-icon {display:block;}
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  display:flex;
+  flex-wrap:wrap;
+  min-height:calc(100vh - 60px);
+}
+.hero-text {
+  flex:1 1 400px;
+  background:linear-gradient(to right,#f9f6a5,#f8c3c1);
+  padding:60px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.hero-text h1 {font-size:48px; font-weight:700; margin-bottom:20px; letter-spacing:4px;}
+.hero-text p {font-size:16px; max-width:550px; margin-bottom:30px;}
+.hero-text button {
+  background:#f26b61; color:#fff; border:none;
+  width:170px; padding:12px 0; font-size:16px; cursor:pointer; transition:background .3s;
+}
+.hero-text button:hover {background:#d85a52;}
+.hero-image {
+  flex:1 1 400px;
+  background:url('images/pexels-robin-stickel-70497.jpg') center/cover no-repeat;
+  min-height:350px;
+}
+
+/* ---------- Gallery ---------- */
+.picture {
+  background:linear-gradient(to right,#f9f6a5,#f8c3c1);
+  padding:80px 0;
+}
+.image-gallery {
+  display:grid;
+  grid-template-columns:280px 280px 1fr;
+  gap:20px;
+  justify-content:center;
+  align-items:start;
+  padding-left:80px;
+  position:relative;
+}
+.image-item img {
+  width:100%; height:100%;
+  object-fit:cover;
+  border-radius:6px;
+}
+.image-gallery .image-item:nth-child(1){grid-column:1; grid-row:1; height:200px;}
+.image-gallery .image-item:nth-child(2){grid-column:1; grid-row:2; height:200px;}
+.image-gallery .image-item:nth-child(3){grid-column:2; grid-row:1 / span 2; height:420px;}
+
+/* Text Box inside gallery */
+.text-box {
+  grid-column:3; 
+  grid-row:1 / span 2;
+  background:#ff5e5e;
+  padding:30px;
+  border-radius:20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-start;
+  max-width:450px;
+  color:#000;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.text-box small {
+  font-size:1rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:10px;
+}
+.text-box h2 {
+  font-size:2rem; font-weight:700; line-height:1.2; margin-bottom:20px;
+}
+.text-box a {
+  font-size:1.1rem; font-weight:500;
+  display:inline-flex; align-items:center; gap:8px;
+  transition:transform .3s;
+  color:#fff;
+}
+.text-box a:hover {transform:translateX(5px);}
+
+/* ---------- Product Section ---------- */
+.heading {text-align:center; font-size:32px; margin:80px 0 20px;}
+.heading span {color:#F9A825;}
+.subhead {text-align:center; font-size:18px; margin-bottom:40px;}
+.products {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+  gap:15px;
+  margin:0 20px 80px 20px;
+}
+.pro {
+  border:1px solid #fc9800;
+  border-radius:10px;
+  text-align:center;
+  padding:10px 5px 20px 5px;
+}
+.pro img {
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  border-radius:10px 10px 0 0;
+}
+.pro h6 {font-size:20px; margin:15px 0 5px;}
+.pro b {font-size:22px; color:red;}
+.pro strike {font-size:16px;}
+.pro a {
+  display:inline-block;
+  background:#fc9800; color:#fff;
+  padding:10px 12px;
+  border-radius:25px;
+  font-size:16px;
+  margin-top:15px;
+}
+
+/* ---------- Advertisement Section ---------- */
+.ads-section {background:#fffbf4; padding:20px 0;}
+.ads {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+  align-items:center;
+  margin:0 20px;
+}
+.ads img {width:100%; max-width:400px;}
+.ads div i {font-style:normal; padding-top:10px; color:red; font-weight:700;}
+.ads div h2 {font-size:40px; margin:10px 0;}
+.ads div h3 {font-size:24px; font-weight:500; margin-bottom:5px;}
+.ads div p {font-size:18px; margin-bottom:10px;}
+.ads div a {display:inline-block; background:red; color:#fff; padding:12px 25px; border-radius:10px; font-size:18px;}
+
+/* ---------- Footer ---------- */
+footer {
+  border-top:3px solid red;
+  background:linear-gradient(to right,#f9f6a5,#f8c3c1);
+  padding:40px 20px;
+}
+.foot {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+  gap:20px;
+}
+footer h2 {font-size:20px; margin-bottom:20px;}
+footer p {line-height:28px; text-align:justify;}
+footer ul {padding-left:10px;}
+footer li {margin-bottom:12px; list-style:none;}
+footer table td {padding:8px 0;}
+.contactus li {margin-bottom:10px;}
+
+/* ---------- Responsive ---------- */
+@media(max-width:900px){
+  .image-gallery {
+    display:grid;
+    grid-template-columns:1fr 1fr; 
+    padding-left:20px;
+  }
+  
+  .image-gallery .image-item:nth-child(1),
+  .image-gallery .image-item:nth-child(2) {
+    width:200%;
+    height:auto;
+  }
+  .image-gallery .image-item:nth-child(3) {
+    grid-column:1 / span 2;
+    grid-row:auto;
+    width:100%;
+    height:auto;
+  }
+  .text-box {
+    grid-column:1 / span 2;
+    grid-row:4; 
+    top:0;
+    transform:none;
+    margin:20px auto;
+    max-width:95%;
+    text-align:center;
+  }
+  .hero-text {padding:40px;}
+}
+@media(max-width:480px){
+  .hero-text h1 {font-size:28px; letter-spacing:2px;}
+  .hero-text button {width:140px;}
+  .text-box {padding:20px; font-size:14px;}
+  .text-box h2 {font-size:1.6rem;}
+  .text-box a {font-size:1rem;}
+  .ads {grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<!-----------HEADER NAV START---------->
+<header>
+  <input type="checkbox" id="menu-toggle">
+  <label for="menu-toggle" class="menu-icon">
+    <img src="images/menu-bar.png" alt="Menu Icon">
+  </label>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="#">Order</a>
+    <a href="#">Food</a>
+    <a href="#">Restaurant</a>
+    <a href="#">Testimonials</a>
+    <a href="#">Contact Us</a>
+  </nav>
+</header>
+<!-----------HEADER NAV ENDS---------->
+<!-----------HERO STARTS---------->
+<section class="hero">
+  <div class="hero-text">
+    <h1>SIMPLOTEL BISTRO</h1>
+    <p>Welcome to Simplotel Bistro, where fresh flavors meet warm hospitality. Our chefs craft every dish with locally sourced ingredients, blending classic recipes with a creative twist.</p>
+    <button>Click Me</button>
+  </div>
+  <div class="hero-image"></div>
+</section>
+<!-----------HERO ENDS---------->
+<!-----------IMAGE GALLERY/ TEXT-BOX STARTS---------->
+<section class="picture">
+  <div class="image-gallery">
+    <div class="image-item"><img src="images/pexels-rachel-claire-6752433.jpg" alt="Dish 1"></div>
+    <div class="image-item"><img src="images/pexels-eva-bronzini-6141651.jpg" alt="Dish 2"></div>
+    <div class="image-item"><img src="images/pexels-mister-mister-3434523.jpg" alt="Dish 3"></div>
+
+    <div class="text-box">
+      <small>SIMPLOTEL BISTRO DISHES</small>
+      <h2>SIMPLOTEL BISTRO<br>FINE DINING &amp; CAFE</h2>
+      <a href="#">Click <img src="images/icons8-arrow-30.png" alt="Arrow" style="vertical-align:middle;"></a>
+    </div>
+  </div>
+</section>
+<!-----------IMAGE GALLERY/ TEXT-BOX ENDS---------->
+<!-----------PRODUCTS STARTS---------->
+<div class="container">
+  <h2 class="heading">Most Ordered <span>Food Menu</span></h2>
+  <p class="subhead">Top Picks from Our Customers..</p>
+  <div class="products">
+    <div class="pro"><img src="images/p-1.jpg" alt="Product 1"><h6>Pizza</h6><p><b>₹499.99</b> <strike>₹599.99</strike></p><a href="#">Order Now</a></div>
+    <div class="pro"><img src="images/p-2.jpg" alt="Product 2"><h6>Burger</h6><p><b>₹299.99</b> <strike>₹499.99</strike></p><a href="#">Order Now</a></div>
+    <div class="pro"><img src="images/p-9.jpg" alt="Product 3"><h6>Waffer/Roll</h6><p><b>₹199.99</b> <strike>₹299.99</strike></p><a href="#">Order Now</a></div>
+    <div class="pro"><img src="images/p-10.jpg" alt="Product 4"><h6>French Fries</h6><p><b>₹50.99</b> <strike>₹60.99</strike></p><a href="#">Order Now</a></div>
+    <div class="pro"><img src="images/p-12.jpg" alt="Product 5"><h6>Sandwich</h6><p><b>₹60.99</b> <strike>₹88.99</strike></p><a href="#">Order Now</a></div>
+  </div>
+</div>
+<!-----------PRODUCTS ENDS---------->
+<!-----------ADS SECTION STARTS---------->
+<div class="ads-section">
+  <div class="container">
+    <div class="ads">
+      <img src="images/scooter.png" alt="Delivery">
+      <div>
+        <i>On Call Delivery</i>
+        <h2><span>Hot Delicious</span><br>Dishes</h2>
+        <h3>Top Indian Dishes at your home</h3>
+        <p>Home Delivery Only In <span>30 Minutes</span></p>
+        <a href="https://wa.me/919876543210">+91 98765 43210</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-----------ADS SECTION ENDS---------->
+<!-----------FOOTER STARTS---------->
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div class="col-foot">
+        <h2>About Us</h2>
+        <p>Simplotel Bistro is a place where fresh flavors meet warm hospitality. Our chefs craft every dish with locally sourced ingredients, blending classic recipes with a creative twist to give you a memorable dining experience.</p>
+      </div>
+      <div class="col-foot">
+        <h2>Quick Links</h2>
+        <ul>
+          <a href="index.html">Home</a><a href="#">Order</a><a href="#">Food</a><a href="#">Restaurant</a><a href="#">Testimonials</a><a href="#">Contact Us</a>
+        </ul>
+      </div>
+      <div class="col-foot">
+        <h2>Opening Timing</h2>
+        <table>
+          <tr><td>Mon-Fri</td><td>10:00 AM - 10:00 PM</td></tr>
+          <tr><td>Saturday</td><td>10:00 AM - 06:00 PM</td></tr>
+          <tr><td>Sunday</td><td>Closed</td></tr>
+        </table>
+      </div>
+      <div class="col-foot">
+        <h2>Contact Us</h2>
+        <ul class="contactus">
+          <li>Simplotel Bistro, 123 Food Street, Bangalore, India, 560001</li>
+          <li>contact@simplotelbistro.com</li>
+          <a href="https://wa.me/919876543210">+91 98765 43210</a>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-----------FOOTER ENDS ---------->
+</body>
+</html>
