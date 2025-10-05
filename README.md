@@ -31,6 +31,11 @@ WhatsApp API link – For instant food ordering communication
 OrderFood/
 │
 ├── index.html — Main homepage file
+│
+├── css/ — Folder containing all stylesheets
+│ ├── style.css — Main stylesheet for layout and design
+│ └── responsive.css — Media queries for mobile and tablet devices
+│
 ├── images/ — Folder containing all images (hero, gallery, products, icons)
 │ ├── p-1.jpg
 │ ├── p-2.jpg
@@ -41,6 +46,7 @@ OrderFood/
 │ ├── scooter.png
 │ ├── icons8-arrow-30.png
 │ └── (and other supporting images)
+│
 └── README.md — Documentation file (this file)
 
 🚀 How to Run the Project
